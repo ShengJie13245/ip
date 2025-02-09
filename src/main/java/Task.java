@@ -1,4 +1,4 @@
-public class Task {
+public abstract class Task {
     protected String taskDescription;
     protected boolean isDone;
 
@@ -15,7 +15,8 @@ public class Task {
         this.isDone = doneStatus;
     }
 
-    @Override public String toString() {
+    @Override 
+    public String toString() {
         return getStatus();
     }
 }

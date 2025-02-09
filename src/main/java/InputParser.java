@@ -30,13 +30,19 @@ public class InputParser {
                 
         case ("deadline"):  
             arguments = argumentString.split("/by");
+            for (int i = 0; i <= 1; i++){
+                arguments[i] = arguments[i].trim();
+            }
             break;
 
         case("event"):
             this.arguments = argumentString.split("/from | /to");
+            for (int i = 0; i <= 2; i++){
+                arguments[i] = arguments[i].trim();
+            }
             break;
         }
 
-        return arguments;
+        return arguments;   
     }
 }

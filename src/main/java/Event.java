@@ -11,6 +11,6 @@ public class Event extends Task{
 
     @Override
     public String getStatus(){
-        return "[E]" + super.getStatus() + " (from: " + from + "to: " + to + ")";
+        return "[E]" + super.getStatus() + " (from: " + from + " to: " + to + ")";
     }
 }
