@@ -17,10 +17,9 @@ public class Sss {
             System.out.println(SEPERATOR);
             System.out.println("Enter Command\n");
 
-            String inputString = input.nextLine();
-            String[] inputArray = inputString.split(" ");
-            String command = inputArray[0];
-            int firstSpaceIndex = inputString.indexOf(" ");
+            InputParser inputString = new InputParser(input.nextLine());
+            String command  = inputString.getCommand();
+            String arguments[] = inputString.getArguments();
             
             switch(command){
             case ("bye"):
@@ -36,21 +35,21 @@ public class Sss {
                 break;
             
             case ("mark"):
-                int markIndex = Integer.parseInt(inputArray[1]) - 1;
+                int markIndex = Integer.parseInt(arguments[0].trim()) - 1;
                 tasks[markIndex].setDoneStatus(true);
                 System.out.println("Marked these:");
                 System.out.println(tasks[markIndex].getStatus());
                 break;
 
             case ("unmark"):
-                int unmarkIndex = Integer.parseInt(inputArray[1]) - 1;
+                int unmarkIndex = Integer.parseInt(arguments[0].trim()) - 1;
                 tasks[unmarkIndex].setDoneStatus(false);
                 System.out.println("Unmarked these:");
                 System.out.println(tasks[unmarkIndex]);
                 break;
 
             case ("todo"):
-                String toDoTaskDescription = inputString.substring(firstSpaceIndex);
+                String toDoTaskDescription = arguments[0].trim();
                 Todo toDoTask = new Todo(toDoTaskDescription);
                 tasks[counter] = toDoTask;
                 counter++;
@@ -58,10 +57,8 @@ public class Sss {
                 break;
                 
             case ("deadline"):
-                int startByCommandIndex = inputString.indexOf("/by");
-                int endByCommandIndex = startByCommandIndex + 4;
-                String deadlineTaskDescription = inputString.substring(firstSpaceIndex, startByCommandIndex);
-                String deadlineBy = inputString.substring(endByCommandIndex);
+                String deadlineTaskDescription = arguments[0];
+                String deadlineBy = arguments[1];
                 Deadline deadlineTask = new Deadline(deadlineTaskDescription, deadlineBy);
                 tasks[counter] = deadlineTask;
                 counter++;
@@ -69,25 +66,14 @@ public class Sss {
                 break;
 
             case ("event"):
-                int startFromCommandIndex = inputString.indexOf("/from");
-                int endFromCommandIndex = startFromCommandIndex + 6;
-                int startToCommandIndex = inputString.indexOf("/to");
-                int endToCommandIndex = startToCommandIndex + 4;
-                String eventTaskDescription = inputString.substring(firstSpaceIndex, startFromCommandIndex);
-                String eventFrom = inputString.substring(endFromCommandIndex, startToCommandIndex);
-                String eventTo = inputString.substring(endToCommandIndex);
+                String eventTaskDescription = arguments[0];
+                String eventFrom = arguments[1];
+                String eventTo = arguments[2];
                 Event eventTask = new Event(eventTaskDescription, eventFrom, eventTo);
                 tasks[counter] = eventTask;
                 counter++;
                 System.out.println("Added this event task:\n  " + eventTask);
                 break;
-
-            default:
-                Task newTask = new Task(inputString);
-                tasks[counter] = newTask;
-                System.out.println("Added: " + inputString);
-                counter += 1;
-                System.out.println(SEPERATOR);
             } 
         }
     }
