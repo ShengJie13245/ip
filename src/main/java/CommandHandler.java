@@ -10,7 +10,7 @@ public class CommandHandler {
         this.arguments = arguments;
     }
 
-    public boolean processCommand(){
+    public boolean processCommand() throws InvalidCommandException{
         switch(command){
         case ("bye"):
             System.out.println("Goodbye, see you next time");
@@ -36,7 +36,7 @@ public class CommandHandler {
                 } else {
                     System.out.println("Please input an integer between 1 and " + TaskManager.getCounter());
                 }
-            }
+            } 
             
             break;
 
@@ -80,6 +80,8 @@ public class CommandHandler {
             TaskManager.addTask(eventTask);
             System.out.println("Added this event task:\n  " + eventTask);
             break;
+        default:
+            throw new InvalidCommandException("No such command");
         }
         return true;
     }
