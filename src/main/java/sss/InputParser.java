@@ -1,3 +1,6 @@
+package sss;
+import exceptions.MissingArgumentException;
+
 public class InputParser {
 
     private String command;

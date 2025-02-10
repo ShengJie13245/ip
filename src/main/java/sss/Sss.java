@@ -1,4 +1,9 @@
+package sss;
+
 import java.util.Scanner;
+
+import exceptions.InvalidCommandException;
+import exceptions.MissingArgumentException;
 
 public class Sss {
 

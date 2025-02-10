@@ -1,3 +1,10 @@
+package sss;
+import exceptions.InvalidCommandException;
+import tasks.Deadline;
+import tasks.Event;
+import tasks.TaskManager;
+import tasks.Todo;
+
 public class CommandHandler {
     
     private static final String SEPERATOR = "-------------------------";
