@@ -24,4 +24,8 @@ public class TaskManager {
         tasks[counter] = newTask;
         counter++;
     }
+
+    public static int getCounter(){
+        return counter;
+    }
 }
