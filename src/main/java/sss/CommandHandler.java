@@ -1,9 +1,9 @@
 package sss;
-import exceptions.InvalidCommandException;
-import tasks.Deadline;
-import tasks.Event;
-import tasks.TaskManager;
-import tasks.Todo;
+import sss.exceptions.InvalidCommandException;
+import sss.tasks.Deadline;
+import sss.tasks.Event;
+import sss.tasks.TaskManager;
+import sss.tasks.Todo;
 
 public class CommandHandler {
     

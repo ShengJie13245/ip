@@ -1,4 +1,4 @@
-package tasks;
+package sss.tasks;
 
 public abstract class Task{
     protected String taskDescription;

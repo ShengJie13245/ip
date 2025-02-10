@@ -1,4 +1,4 @@
-package exceptions;
+package sss.exceptions;
 
 public class InvalidCommandException extends Exception{
     public InvalidCommandException(String message){

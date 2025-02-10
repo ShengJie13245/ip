@@ -1,4 +1,4 @@
-package tasks;
+package sss.tasks;
 
 public class Deadline extends Task {
     

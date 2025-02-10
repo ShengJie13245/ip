@@ -2,8 +2,8 @@ package sss;
 
 import java.util.Scanner;
 
-import exceptions.InvalidCommandException;
-import exceptions.MissingArgumentException;
+import sss.exceptions.InvalidCommandException;
+import sss.exceptions.MissingArgumentException;
 
 public class Sss {
 
