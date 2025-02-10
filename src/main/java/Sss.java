@@ -15,10 +15,14 @@ public class Sss {
 
             InputParser inputString = new InputParser(input.nextLine());
             String command  = inputString.getCommand();
-            String arguments[] = inputString.getArguments();
-            CommandHandler handler = new CommandHandler(command, arguments);
-            continueProgram = handler.processCommand(); //return false with bye command else true
+            try {
+                String arguments[] = inputString.getArguments();
+                CommandHandler handler = new CommandHandler(command, arguments);
+                continueProgram = handler.processCommand(); //return false with bye command else true
+            } catch (MissingArgumentException e) {
+                System.out.println(e.getMessage());
+            }
         } 
     }
 }
-
+    
