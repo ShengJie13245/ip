@@ -8,16 +8,23 @@ public class Sss {
         System.out.println("Nice to meet you");
         boolean continueProgram = true ;
 
-        while(continueProgram){
+        while(continueProgram) {
             Scanner input = new Scanner(System.in);
             System.out.println(SEPERATOR);
             System.out.println("Enter Command\n");
 
             InputParser inputString = new InputParser(input.nextLine());
-            String command  = inputString.getCommand();
-            String arguments[] = inputString.getArguments();
-            CommandHandler handler = new CommandHandler(command, arguments);
-            continueProgram = handler.processCommand(); //return false with bye command else true
+            try {
+                String command  = inputString.getCommand();
+                String arguments[] = inputString.getArguments();
+                CommandHandler handler = new CommandHandler(command, arguments);
+                continueProgram = handler.processCommand(); //return false with bye command else true
+            } catch (MissingArgumentException e) {
+                System.out.println(e.getMessage());
+            } catch (InvalidCommandException e) {
+                System.out.println(e.getMessage());
+                System.out.println("Some valid commands are deadline, todo, event, list, mark, unmark, bye");
+            } 
         } 
     }
 }

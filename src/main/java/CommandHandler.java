@@ -10,7 +10,7 @@ public class CommandHandler {
         this.arguments = arguments;
     }
 
-    public boolean processCommand(){
+    public boolean processCommand() throws InvalidCommandException{
         switch(command){
         case ("bye"):
             System.out.println("Goodbye, see you next time");
@@ -22,17 +22,39 @@ public class CommandHandler {
             break;
         
         case ("mark"):
-            int markIndex = Integer.parseInt(arguments[0].trim()) - 1;
-            TaskManager.markTask(markIndex);
-            System.out.println("Marked these:");
-            System.out.println(TaskManager.getTaskAtIndex(markIndex).getStatus());
+            int markIndex;
+            try {
+                markIndex = Integer.parseInt(arguments[0].trim()) - 1;
+                TaskManager.markTask(markIndex);
+                System.out.println("Marked these:");
+                System.out.println(TaskManager.getTaskAtIndex(markIndex).getStatus());
+            } catch (NumberFormatException e) {
+                System.out.println("Please input an integer");
+            } catch (IndexOutOfBoundsException | NullPointerException e) {
+                if (TaskManager.getCounter() < 1){
+                    System.out.println("No tasks right now");
+                } else {
+                    System.out.println("Please input an integer between 1 and " + TaskManager.getCounter());
+                }
+            } 
+            
             break;
 
         case ("unmark"):
-            int unmarkIndex = Integer.parseInt(arguments[0].trim()) - 1;
-            TaskManager.unmarkTask(unmarkIndex);
-            System.out.println("Unmarked these:");
-            System.out.println(TaskManager.getTaskAtIndex(unmarkIndex).getStatus());
+            try {
+                int unmarkIndex = Integer.parseInt(arguments[0].trim()) - 1;
+                TaskManager.unmarkTask(unmarkIndex);
+                System.out.println("Unmarked these:");
+                System.out.println(TaskManager.getTaskAtIndex(unmarkIndex).getStatus());
+            } catch (NumberFormatException e) {
+                System.out.println("Please input an integer");
+            } catch (IndexOutOfBoundsException | NullPointerException e) {
+                if (TaskManager.getCounter() < 1){
+                    System.out.println("No tasks right now");
+                } else {
+                    System.out.println("Please input an integer between 1 and " + TaskManager.getCounter());
+                }             
+            }
             break;
 
         case ("todo"):
@@ -58,6 +80,8 @@ public class CommandHandler {
             TaskManager.addTask(eventTask);
             System.out.println("Added this event task:\n  " + eventTask);
             break;
+        default:
+            throw new InvalidCommandException("No such command");
         }
         return true;
     }
