@@ -1,4 +1,4 @@
-package sss.tasks;
+package tasks;
 
 public class Todo extends Task{
     

@@ -1,5 +1,5 @@
-package sss;
-import sss.exceptions.MissingArgumentException;
+package ui;
+import exceptions.MissingArgumentException;
 
 public class InputParser {
 

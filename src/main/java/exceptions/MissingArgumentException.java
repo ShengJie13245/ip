@@ -1,4 +1,4 @@
-package sss.exceptions;
+package exceptions;
 
 public class MissingArgumentException extends Exception{
 

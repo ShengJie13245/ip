@@ -1,4 +1,4 @@
-package sss.tasks;
+package tasks;
 
 public class TaskManager {
     public static Task[] tasks = new Task[100];
