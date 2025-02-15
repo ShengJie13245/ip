@@ -1,7 +1,6 @@
 package ui;
 
 import java.util.Scanner;
-
 import exceptions.InvalidCommandException;
 import exceptions.MissingArgumentException;
 
@@ -21,7 +20,7 @@ public class Sss {
             InputParser inputString = new InputParser(input.nextLine());
             try {
                 String command  = inputString.getCommand();
-                String arguments[] = inputString.getArguments();
+                String[] arguments = inputString.getArguments();
                 CommandHandler handler = new CommandHandler(command, arguments);
                 continueProgram = handler.processCommand(); //return false with bye command else true
             } catch (MissingArgumentException e) {
