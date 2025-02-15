@@ -9,7 +9,7 @@ public class InputParser {
     
     public InputParser(String input){
         String[] inputArray = input.split(" ", 2);
-        this.command = inputArray[0];
+        this.command = inputArray[0].toLowerCase();
         if (inputArray.length > 1){
             this.argumentString = inputArray[1];
         }
@@ -23,9 +23,10 @@ public class InputParser {
         switch(command){
         case ("mark"):
         case ("unmark"):
+        case ("delete"):
             arguments[0] = argumentString;
             if (argumentString == null){
-                throw new MissingArgumentException("Please use format  \"mark <integer>\"");
+                throw new MissingArgumentException("Please use format  \"<command> <integer>\"");
             }
             break;
 

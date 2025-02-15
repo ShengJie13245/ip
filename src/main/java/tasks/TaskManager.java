@@ -35,5 +35,6 @@ public class TaskManager {
 
     public static void deleteTask(int index){
         tasks.remove(index);
+        counter--;
     }
 }
