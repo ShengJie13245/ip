@@ -11,7 +11,9 @@ public class Sss {
     public static void main(String[] args) {
         System.out.println("Hello from Sss");
         System.out.println("Nice to meet you");
-        boolean continueProgram = true ;
+        boolean continueProgram = true;
+
+        //FileProcessor.readFromFile();
 
         while(continueProgram) {
             Scanner input = new Scanner(System.in);

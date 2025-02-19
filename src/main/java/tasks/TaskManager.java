@@ -1,30 +1,38 @@
 package tasks;
 
+import java.util.ArrayList;
+
+import ui.FileProcessor;
+
 public class TaskManager {
-    public static Task[] tasks = new Task[100];
+    public static ArrayList<Task> tasks = new ArrayList<>();
     public static int counter = 0;
 
     public static void printTasks(){
         for (int i = 0; i<counter; i++){
-            System.out.println((i+1) + "." + tasks[i]);
+            System.out.println((i+1) + "." + tasks.get(i));
         }
     }
 
     public static void markTask(int index){
-        tasks[index].setDoneStatus(true);
+        tasks.get(index).setDoneStatus(true);
     }
 
     public static void unmarkTask(int index){
-        tasks[index].setDoneStatus(false);
+        tasks.get(index).setDoneStatus(false);
     }
 
     public static Task getTaskAtIndex(int index){
-        return tasks[index];
+        return tasks.get(index);
     }
 
     public static void addTask(Task newTask){
-        tasks[counter] = newTask;
+        tasks.add(newTask);
         counter++;
+    }
+
+    public static void saveTasks(){
+        FileProcessor.writeToFile(tasks);
     }
 
     public static int getCounter(){

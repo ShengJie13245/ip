@@ -17,6 +17,14 @@ public abstract class Task{
         this.isDone = doneStatus;
     }
 
+    public String getDescription(){
+        return taskDescription;
+    }
+
+    public boolean getisDone(){
+        return isDone;
+    }
+
     @Override 
     public String toString() {
         return getStatus();
