@@ -13,7 +13,7 @@ import tasks.Event;
 import tasks.Task;
 
 public class FileProcessor {
-    private static final String FILE_PATH = "text-ui-test\\taskdata.txt";
+    private static final String FILE_PATH = "saves\\taskdata.txt";
 
     public static void writeToFile(ArrayList<Task> tasks){
         try {
