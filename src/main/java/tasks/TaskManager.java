@@ -2,6 +2,8 @@ package tasks;
 
 import java.util.ArrayList;
 
+import ui.FileProcessor;
+
 public class TaskManager {
     public static ArrayList<Task> tasks = new ArrayList<>();
     public static int counter = 0;
@@ -27,6 +29,10 @@ public class TaskManager {
     public static void addTask(Task newTask){
         tasks.add(newTask);
         counter++;
+    }
+
+    public static void saveTasks(){
+        FileProcessor.writeToFile(tasks);
     }
 
     public static int getCounter(){

@@ -87,6 +87,7 @@ public class CommandHandler {
             Todo toDoTask = new Todo(toDoTaskDescription);
             TaskManager.addTask(toDoTask);
             System.out.println("Added this todo task:\n  " + toDoTask);
+            
             break;
             
         case ("deadline"):
@@ -108,6 +109,7 @@ public class CommandHandler {
         default:
             throw new InvalidCommandException("No such command");
         }
+        TaskManager.saveTasks();
         return true;
     }
 } 
