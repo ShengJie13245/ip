@@ -9,6 +9,11 @@ public abstract class Task{
         this.isDone = false;
     }
 
+    public Task(String description, boolean isDone){
+        this.taskDescription = description;
+        this.isDone = isDone;
+    }
+
     public String getStatus(){
         return (isDone ? "[X] " + taskDescription : "[ ] " + taskDescription);
     }

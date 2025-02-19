@@ -17,11 +17,11 @@ public class FileProcessor {
 
     public static void writeToFile(ArrayList<Task> tasks){
         try {
-            FileWriter fw = new FileWriter(FILE_PATH);
+            FileWriter writer = new FileWriter(FILE_PATH);
             for (Task task : tasks){
                 String description = task.getDescription();
                 boolean isDone = task.getisDone();
-                String text = (isDone ? "[X] " + description : "[ ] " + description);
+                String text = (isDone ? "[X] " + description : "[] " + description);
                 if (task instanceof Deadline){
                     String by = ((Deadline) task).getBy();
                     text = "[D] " + text + " " + by;
@@ -32,11 +32,49 @@ public class FileProcessor {
                 } else if (task instanceof Todo){
                     text = "[T] " + text;
                 }
-                fw.write(text + System.lineSeparator());
+                writer.write(text + System.lineSeparator());
             }
-            fw.close();       
+            writer.close();       
         } catch (IOException e) {
             System.out.println(e.getMessage());
+        }
+    }
+    
+    public static void readFromFile(){
+        File file = new File(FILE_PATH);
+        int counter = 0;
+        try {
+            Scanner fileInput = new Scanner(file);
+            while (fileInput.hasNext()){
+                String[] inputArray = fileInput.nextLine().split(" ");
+                String description = inputArray[2];
+                boolean isDone = inputArray[1].equals("[X]") ? true : false; 
+                switch (inputArray[0]){
+                case ("[T]"):
+                    Task todoTask = new Todo(description, isDone);
+                    TaskManager.addTask(todoTask);
+                    counter++;
+                    break;
+                case ("[D]"):
+                    String by = inputArray[3];
+                    Task deadlineTask = new Deadline(description, by, isDone);
+                    TaskManager.addTask(deadlineTask);
+                    counter++;
+                    break;
+                case ("[E]"):
+                    String from = inputArray[3];
+                    String to = inputArray[4];
+                    Task eventTask = new Event(description, from, to, isDone);
+                    TaskManager.addTask(eventTask);
+                    counter++;
+                    break;
+                }
+            }
+            fileInput.close();
+        } catch (FileNotFoundException e){
+            System.out.println("No previously saved tasks");
+        } finally {
+            System.out.println("Added " + counter + " tasks based on previous records");
         }
     }
 }

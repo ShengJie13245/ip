@@ -13,10 +13,10 @@ public class Sss {
         System.out.println("Nice to meet you");
         boolean continueProgram = true;
 
-        //FileProcessor.readFromFile();
+        FileProcessor.readFromFile();
 
+        Scanner input = new Scanner(System.in);
         while(continueProgram) {
-            Scanner input = new Scanner(System.in);
             System.out.println(SEPERATOR);
             System.out.println("Enter Command\n");
 
@@ -32,7 +32,8 @@ public class Sss {
                 System.out.println(e.getMessage());
                 System.out.println("Some valid commands are deadline, todo, event, list, mark, unmark, bye");
             } 
-        } 
+        }
+        input.close();
     }
 }
 
