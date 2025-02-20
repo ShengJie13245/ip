@@ -21,16 +21,16 @@ public class FileProcessor {
             for (Task task : tasks){
                 String description = task.getDescription();
                 boolean isDone = task.getisDone();
-                String text = (isDone ? "[X] " + description : "[] " + description);
+                String text = "/isDone " + (isDone ? "Done /description " + description : "Not Done /description " + description);
                 if (task instanceof Deadline){
                     String by = ((Deadline) task).getBy();
-                    text = "[D] " + text + " " + by;
+                    text = "/task deadline " + text + " /by " + by;
                 } else if (task instanceof Event){
                     String from = ((Event) task).getFrom();
                     String to = ((Event) task).getTo();
-                    text = "[E] " + text + " " + from + " " + to;
+                    text = "/task event " + text + " /from " + from + " /to " + to;
                 } else if (task instanceof Todo){
-                    text = "[T] " + text;
+                    text = "/task todo " + text;
                 }
                 writer.write(text + System.lineSeparator());
             }
@@ -46,24 +46,29 @@ public class FileProcessor {
         try {
             Scanner fileInput = new Scanner(file);
             while (fileInput.hasNext()){
-                String[] inputArray = fileInput.nextLine().split(" ");
-                String description = inputArray[2];
-                boolean isDone = inputArray[1].equals("[X]") ? true : false; 
-                switch (inputArray[0]){
-                case ("[T]"):
+                String[] inputArray = fileInput.nextLine().split("/task | /description | /isDone | /by | /from | /to" );
+                for (int i = 0; i < inputArray.length; i++){
+                    inputArray[i] = inputArray[i].trim();
+                }
+
+                String taskType = inputArray[1];
+                String description = inputArray[3];
+                boolean isDone = inputArray[2].equals("Done") ? true : false; 
+                switch (taskType){
+                case ("todo"):
                     Task todoTask = new Todo(description, isDone);
                     TaskManager.addTask(todoTask);
                     counter++;
                     break;
-                case ("[D]"):
-                    String by = inputArray[3];
+                case ("deadline"):
+                    String by = inputArray[4];
                     Task deadlineTask = new Deadline(description, by, isDone);
                     TaskManager.addTask(deadlineTask);
                     counter++;
                     break;
-                case ("[E]"):
-                    String from = inputArray[3];
-                    String to = inputArray[4];
+                case ("event"):
+                    String from = inputArray[4];
+                    String to = inputArray[5];
                     Task eventTask = new Event(description, from, to, isDone);
                     TaskManager.addTask(eventTask);
                     counter++;
