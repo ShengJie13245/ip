@@ -1,4 +1,4 @@
-package ui;
+package parser;
 import exceptions.MissingArgumentException;
 import java.util.ArrayList;
 import java.util.Arrays;

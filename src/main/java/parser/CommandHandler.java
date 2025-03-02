@@ -1,4 +1,4 @@
-package ui;
+package parser;
 
 import command.ByeCommand;
 import command.DeadlineCommand;

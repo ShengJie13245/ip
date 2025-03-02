@@ -2,7 +2,7 @@ package tasks;
 
 import java.util.ArrayList;
 
-import ui.FileProcessor;
+import parser.FileProcessor;
 
 public class TaskManager {
     public static ArrayList<Task> tasks = new ArrayList<>();
