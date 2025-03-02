@@ -10,12 +10,12 @@ public class Sss {
     public static void main(String[] args) {
         System.out.println("Hello from Sss");
         System.out.println("Nice to meet you");
-        boolean continueProgram = true;
+        boolean iscontinueProgram = true;
 
         FileProcessor.readFromFile();
 
         Scanner input = new Scanner(System.in);
-        while(continueProgram) {
+        while(iscontinueProgram) {
             System.out.println(SEPERATOR);
             System.out.println("Enter Command\n");
 
@@ -24,7 +24,7 @@ public class Sss {
                 String command  = inputString.getCommand();
                 String[] arguments = inputString.getArguments();
                 CommandHandler handler = new CommandHandler(command, arguments);
-                continueProgram = handler.processCommand(); //return false with bye command else true
+                iscontinueProgram = handler.processCommand(); //return false with bye command else true
             } catch (MissingArgumentException e) {
                 System.out.println(e.getMessage());
             } catch (InvalidCommandException e) {
