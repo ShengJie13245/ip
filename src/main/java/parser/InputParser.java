@@ -32,6 +32,13 @@ public class InputParser {
             }
             break;
 
+        case ("find"):
+            arguments.add(argumentString);
+            if (argumentString == null){
+                throw new MissingArgumentException("Please use format  \"<command> <String>\"");
+            }
+            break;
+
         case ("todo"):
             arguments.add(argumentString);
             if (argumentString == null){

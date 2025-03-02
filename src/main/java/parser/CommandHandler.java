@@ -4,6 +4,7 @@ import command.ByeCommand;
 import command.DeadlineCommand;
 import command.DeleteCommand;
 import command.EventCommand;
+import command.FindCommand;
 import command.ListCommand;
 import command.MarkCommand;
 import command.TodoCommand;
@@ -31,6 +32,11 @@ public class CommandHandler {
         case ("list"):
             ListCommand list = new ListCommand();
             list.execute();
+            break;
+        
+        case ("find"):
+            FindCommand find = new FindCommand(arguments);
+            find.execute();
             break;
         
         case ("mark"):
