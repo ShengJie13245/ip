@@ -12,9 +12,16 @@ import tasks.Deadline;
 import tasks.Event;
 import tasks.Task;
 
+/**
+ * A file processor that saves and loads task from and to a txt file
+ */
 public class FileProcessor {
     private static final String FILE_PATH = "./saves/taskdata.txt";
 
+    /**
+     * Saves tasks to a txt file which can be loaded again during the initalization of the chatbot 
+     * @param tasks An arraylist of {@link Task}
+     */
     public static void writeToFile(ArrayList<Task> tasks){
         try {
             FileWriter writer = new FileWriter(FILE_PATH);
@@ -40,6 +47,10 @@ public class FileProcessor {
         }
     }
     
+    /**
+     * Read tasks from a txt file saved by {@link #writeToFile(ArrayList) writeToFile} and load it
+     * to the chatbot
+     */
     public static void readFromFile(){
         File file = new File(FILE_PATH);
         int counter = 0;
