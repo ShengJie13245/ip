@@ -13,6 +13,7 @@ import tasks.Event;
 import tasks.Task;
 
 public class FileProcessor {
+    private static final String FOLDER_PATH = "./saves";
     private static final String FILE_PATH = "./saves/taskdata.txt";
 
     public static void writeToFile(ArrayList<Task> tasks){
@@ -41,6 +42,11 @@ public class FileProcessor {
     }
     
     public static void readFromFile(){
+        File folderDirectory = new File(FOLDER_PATH);
+        if (!folderDirectory.exists()){
+            folderDirectory.mkdirs();
+        }
+
         File file = new File(FILE_PATH);
         int counter = 0;
         try {
