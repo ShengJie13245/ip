@@ -16,6 +16,7 @@ import tasks.Task;
  * A file processor that saves and loads task from and to a txt file
  */
 public class FileProcessor {
+    private static final String FOLDER_PATH = "./saves";
     private static final String FILE_PATH = "./saves/taskdata.txt";
 
     /**
@@ -52,6 +53,11 @@ public class FileProcessor {
      * to the chatbot
      */
     public static void readFromFile(){
+        File folderDirectory = new File(FOLDER_PATH);
+        if (!folderDirectory.exists()){
+            folderDirectory.mkdirs();
+        }
+
         File file = new File(FILE_PATH);
         int counter = 0;
         try {
