@@ -81,14 +81,14 @@ Sss data is saved automatically as a txt file [Jar file location]/saves/taskdata
 
 
 ## Command Summary
-Command | Format, Examples |
-------- | ----------------
-**list** | `list` |
-**mark** | `mark INDEX`<br> e.g. `mark 1` |
-**unmark** | `unmark INDEX`<br> e.g. `unmark 1` |
-**delete** | `delete INDEX`<br> e.g. `delete 1` |
-**todo** | `todo TASK_DESCRIPTION`<br> e.g. `todo return books` |
-**deadline** | `deadline TASK_DESCRIPTION /by DATE`<br> e.g. `deadline submit homework /by 10th March` |
-**event** | `event TASK_DESCRIPTION /from STARTING_DATE /to ENDING_DATE`<br> e.g. `event attend lecture /from 6th Feb 5pm /to 6th Feb 7pm` |
-**find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g. `find return book` |
-**bye** | `bye`|
+| Command | Format, Examples |
+|---------|------------------|
+| **list** | `list` |
+| **mark** | `mark INDEX`<br> e.g. `mark 1` |
+| **unmark** | `unmark INDEX`<br> e.g. `unmark 1` |
+| **delete** | `delete INDEX`<br> e.g. `delete 1` |
+| **todo** | `todo TASK_DESCRIPTION`<br> e.g. `todo return books` |
+| **deadline** | `deadline TASK_DESCRIPTION /by DATE`<br> e.g. `deadline submit homework /by 10th March` |
+| **event** | `event TASK_DESCRIPTION /from STARTING_DATE /to ENDING_DATE`<br> e.g. `event attend lecture /from 6th Feb 5pm /to 6th Feb 7pm` |
+| **find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g. `find return book` |
+| **bye** | `bye` |
