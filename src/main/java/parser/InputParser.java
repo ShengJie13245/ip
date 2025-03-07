@@ -3,12 +3,22 @@ import exceptions.MissingArgumentException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+
+
+/**
+ * An input parser to make sense of the user input 
+ */
 public class InputParser {
 
     private String command;
     private String argumentString;
     private ArrayList<String> arguments = new ArrayList<>();
-    
+
+
+    /**
+     * Constructs a parser for the input of the user. 
+     * @param input A string provided by the user 
+     */
     public InputParser(String input){
         String[] inputArray = input.split(" ", 2);
         this.command = inputArray[0].toLowerCase();
@@ -16,11 +26,19 @@ public class InputParser {
             this.argumentString = inputArray[1];
         }
     }
-
+    /**
+     * Return the command in this input
+     * @return command in the input
+     */
     public String getCommand(){
         return command;
     }   
 
+    /**
+     * Return the arguments after processing the input with relation to the command
+     * @return A String array the contains the arguments needed to process the command
+     * @throws MissingArgumentException
+     */
     public String[] getArguments() throws MissingArgumentException{
         switch(command){
         case ("mark"):

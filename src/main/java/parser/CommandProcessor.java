@@ -12,16 +12,30 @@ import command.UnmarkCommand;
 import exceptions.InvalidCommandException;
 import tasks.TaskManager;
 
-public class CommandHandler {
+/**
+ * A command handler to process the command given to the chatbot
+ */
+public class CommandProcessor {
 
     private String command;
     private String[] arguments;
 
-    public CommandHandler(String command, String[] arguments){
+    /**
+     * Constructs a command handler for further processing of the command. The arguments field should contain
+     * values relative to the command   
+     * @param command A single word string that tells the chatbot what to do
+     * @param arguments An array of strings containing information to be used when processing the command
+     */
+    public CommandProcessor(String command, String[] arguments){
         this.command = command;
         this.arguments = arguments;
     }
 
+    /**
+     * Process and execute this command
+     * @return false if bye command was used else true
+     * @throws InvalidCommandException
+     */
     public boolean processCommand() throws InvalidCommandException{
         switch(command){
         case ("bye"):
